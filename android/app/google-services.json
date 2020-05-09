@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "982388286670",
+    "firebase_url": "https://music-list-6afa8.firebaseio.com",
+    "project_id": "music-list-6afa8",
+    "storage_bucket": "music-list-6afa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982388286670:android:6e58113a10252be21c1c9f",
+        "android_client_info": {
+          "package_name": "com.vn.ringtone_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982388286670-lgk8bt6bkk18kkdrpo67f5pjupn0evhv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vn.ringtone_app",
+            "certificate_hash": "1c6a88f6a4e7dcae61bd086c35eaeaf19f6fe4b3"
+          }
+        },
+        {
+          "client_id": "982388286670-t5cdd2fnfmgnnnuiqv5tvkvi6c4ljm73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vn.ringtone_app",
+            "certificate_hash": "12ac41d5ec566bebc61e765f1acf14430db4f822"
+          }
+        },
+        {
+          "client_id": "982388286670-bo3860ag4s43ue2cit1h6iv916s22rik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9TuyK7mHL5tsAsb6jSqqlAapiLMcic_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982388286670-bo3860ag4s43ue2cit1h6iv916s22rik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
