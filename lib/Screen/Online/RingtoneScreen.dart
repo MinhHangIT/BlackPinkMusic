@@ -59,11 +59,8 @@ class RingtoneScreenState extends State<RingtoneScreen>  {
     return SafeArea(
       child: WillPopScope(
         onWillPop: () {
-          if (!panelController.isPanelClosed()) {
-            panelController.close();
-          } else {
-            _showExitDialog();
-          }
+
+            Navigator.pop(context);
         },
         child: Scaffold(
             body: SlidingUpPanel(

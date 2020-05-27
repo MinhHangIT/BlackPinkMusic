@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:ringtone_app/model/Album.dart';
 import 'package:ringtone_app/model/AlbumLocal.dart';
 import 'package:ringtone_app/model/Ringtone.dart';
+import 'package:ringtone_app/model/Users.dart';
 import 'package:ringtone_app/model/playback.dart';
 import 'package:ringtone_app/model/playerstate.dart';
 import 'package:ringtone_app/model/SongLyric.dart';
@@ -16,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:http/http.dart' as http;
 
 
 
@@ -23,6 +25,7 @@ class MusicPlayerBloc {
 
   FirebaseDatabase database;
   DatabaseReference databaseReference;
+  Users _users;
 
   BehaviorSubject<List<Song>> _songs$;
   BehaviorSubject<List<Song>> _ringtone$;
@@ -67,7 +70,7 @@ class MusicPlayerBloc {
     _initAudioPlayer();
   }
 
-  // get data from firebase
+   //get data from firebase
 //  Future<List<Ringtone>> getRingtoneSer() async {
 //    //print("Chij Hanhj Hanh Hanh Hanh HAnh");
 //    databaseReference = FirebaseDatabase.instance.reference();
@@ -80,7 +83,6 @@ class MusicPlayerBloc {
 //      print("Chij Hanhj Hanh Hanh Hanh HAnh");
 //      if (snapshot.value != null) {
 //        print("Chij Hanhj Hanh Hanh Hanh HAnh");
-//        Map<dynamic, dynamic> values = snapshot.value;
 //        values.forEach((key, values) {
 //          ringtone.add(Ringtone.fromJson(values));
 //
@@ -90,6 +92,65 @@ class MusicPlayerBloc {
 //    });
 //    return ringtone;
 //  }
+
+  Future<void> fetchSongData() async {
+    final response = await http.get('https://firebasestorage.googleapis.com/v0/b/blackpinkmusicdata-17f35.appspot.com/o/song.json?alt=media&token=6b86cfd7-0112-47d9-9db1-0a8bf170fb5c');
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      final jsonResponse = json.decode(response.body);
+      hashMySong = new Map<String, SongLyric>();
+      List<Song> songs = new List<Song>();
+      jsonResponse.forEach((o) {
+//      print(o.toString());
+        SongLyric mySong = SongLyric.fromJson(o);
+        Song song = Song.fromMap(o);
+        song.type = "songOnline";
+
+        int check = songs.where((ele)=> ele.title == song.title).toList().length;
+        if (check == 0)
+        {
+          songs.add(song);
+        }
+        songs.sort((a,b)=>a.title.compareTo(b.title));
+
+        hashMySong[mySong.key] = mySong;
+      });
+      _songs$.add(songs);
+
+    } else {
+      print("Failed to load data");
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+//      throw Exception('Failed to load');
+    }
+  }
+
+  Future<void> fetchRingToneData() async {
+    final response = await http.get('https://firebasestorage.googleapis.com/v0/b/blackpinkmusicdata-17f35.appspot.com/o/ringtone.json?alt=media&token=f22dbfde-545e-4c96-8d4e-c00c0fa908ce');
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      final jsonResponse = json.decode(response.body);
+      List<Song> mySongs = new List<Song>();
+      jsonResponse.forEach((o) {
+        Song song = Song.fromMap(o);
+        song.type = "ringtone";
+        mySongs.add(song);
+        mySongs.sort((a,b)=>a.title.compareTo(b.title));
+      });
+
+      _ringtone$.add(mySongs);
+
+    } else {
+      print("Failed to load data");
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+//      throw Exception('Failed to load');
+    }
+  }
 
   Future<void> fetchSongs() async {
     String jsonString = await rootBundle.loadString('lib/data/song.json');
@@ -327,18 +388,47 @@ class MusicPlayerBloc {
 
   Future<void> saveFavorites() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
+
     final List<Song> _favorites = _favorites$.value;
     List<String> _encodedStrings = [];
     for (Song song in _favorites) {
       _encodedStrings.add(_encodeSongToJson(song));
     }
+
+//    String uid = _prefs.getString("user_id");
+//    if(uid != null){
+//      databaseReference = FirebaseDatabase.instance.reference();
+//
+////      await databaseReference.child("users").child(uid).once().then((DataSnapshot snapshot){
+////        if(snapshot.value != null){
+////
+////        }
+////      });
+//
+////      print("USER_ID: " + uid);
+////
+////      await databaseReference.child("users").child(uid).child("music_favorites").set(_favorites$.value);
+//
+//    }
+
     _prefs.setStringList("favorites", _encodedStrings);
   }
 
   void retrieveFavorites() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
+//    String uid = _prefs.getString("user_id");
+//    databaseReference = FirebaseDatabase.instance.reference();
+//    List<String> _savedStrings;
+//    await databaseReference.child("users").child(uid).once().then((DataSnapshot snapshot){
+//      if(snapshot.value != null && snapshot.value["music_favorites"] != null){
+//        _savedStrings = List.from(snapshot.value['music_favorites']);
+//      } else {
+//        _savedStrings = new List<String>();
+//      }
+//    });
     final List<Song> _fetchedSongs = _songs$.value;
     List<String> _savedStrings = _prefs.getStringList("favorites") ?? [];
+
     List<Song> _favorites = [];
     for (String data in _savedStrings) {
       final Song song = _decodeSongFromJson(data);

@@ -232,6 +232,14 @@ public class MainActivity extends FlutterActivity {
       contentValues.put(MediaStore.Audio.Media.IS_ALARM, false);
       try {
         Uri uri1 = MediaStore.Audio.Media.getContentUriForPath(file.getAbsolutePath());
+        sendBroadcast (
+                new Intent(Intent.ACTION_MEDIA_MOUNTED,
+                        Uri.fromFile(file))
+        );
+        getContentResolver().delete(
+                uri1,
+                MediaStore.MediaColumns.DATA + "=\""
+                        + file.getAbsolutePath() + "\"", null);
         Uri uri2 = getApplicationContext().getContentResolver().insert(uri1, contentValues);
 
         RingtoneManager.setActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_ALARM, uri2);

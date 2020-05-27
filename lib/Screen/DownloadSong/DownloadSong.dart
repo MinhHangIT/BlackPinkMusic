@@ -32,6 +32,9 @@ class _DownloadSongScreenState extends State<DownloadSongScreen> {
             ),
           ),
           leading: IconButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.arrow_back_ios,
               color: Color(0xFF274D85),

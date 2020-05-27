@@ -139,7 +139,8 @@ class PreferencesBoard extends StatelessWidget {
             final SongLyric _mySong =
             _globalBloc.musicPlayerBloc.hashMySong[_currentSong.key];
 
-            return IconButton(
+            return _currentSong.type != "ringtone" && _currentSong.type != "songOff" ?
+            IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -153,7 +154,7 @@ class PreferencesBoard extends StatelessWidget {
                 size: 28,
                 color: Color(0xFFC7D2E3),
               ),
-            );
+            ): Container();
 
 //
           },

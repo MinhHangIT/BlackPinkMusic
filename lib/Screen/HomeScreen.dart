@@ -5,14 +5,10 @@ import 'package:ringtone_app/Screen/Online/SongScreen.dart';
 import 'package:ringtone_app/blocs/global.dart';
 import 'package:provider/provider.dart';
 import 'package:ringtone_app/common/empty_screen.dart';
-import 'package:rate_my_app/rate_my_app.dart';
-import 'package:ringtone_app/model/Ringtone.dart';
 import 'package:ringtone_app/model/SongLyric.dart';
-import 'package:ringtone_app/store/AppStore.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:flute_music_player/flute_music_player.dart';
 import 'package:ringtone_app/model/playerstate.dart';
-import 'package:ringtone_app/Screen/Offline/Ringtone_Title.dart';
 import 'package:flutter/services.dart';
 
 

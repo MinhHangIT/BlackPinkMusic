@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ringtone_app/Screen/Login/LoginScreen.dart';
 import 'package:ringtone_app/Screen/MainScreen.dart';
 import 'package:ringtone_app/blocs/global.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -31,12 +32,12 @@ class _BlackPinkAppState extends State<BlackPinkApp> {
                       // get data song
                     }
               );
-              _globalBloc.musicPlayerBloc.fetchSongs().then(
+              _globalBloc.musicPlayerBloc.fetchSongData().then(
                       (_){
                     _globalBloc.musicPlayerBloc.retrieveFavorites();
                   });
               // get data ringtone
-              _globalBloc.musicPlayerBloc.fetchRingtones().then(
+              _globalBloc.musicPlayerBloc.fetchRingToneData().then(
                       (_) {
                     _globalBloc.musicPlayerBloc.retrieveFavorites();
                   });
@@ -75,7 +76,7 @@ class _BlackPinkAppState extends State<BlackPinkApp> {
                   ),
                 );
               } else {
-                return MainScreen();
+                return Login(true);
               }
             },
           ),

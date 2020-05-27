@@ -1,50 +1,79 @@
 {
   "project_info": {
-    "project_number": "982388286670",
-    "firebase_url": "https://music-list-6afa8.firebaseio.com",
-    "project_id": "music-list-6afa8",
-    "storage_bucket": "music-list-6afa8.appspot.com"
+    "project_number": "781260468063",
+    "firebase_url": "https://blackpinkmusicdata-17f35.firebaseio.com",
+    "project_id": "blackpinkmusicdata-17f35",
+    "storage_bucket": "blackpinkmusicdata-17f35.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:982388286670:android:6e58113a10252be21c1c9f",
+        "mobilesdk_app_id": "1:781260468063:android:823f22ae73765c3b00d0ea",
         "android_client_info": {
-          "package_name": "com.vn.ringtone_app"
+          "package_name": "com.blackpink.ringtone.app.music"
         }
       },
       "oauth_client": [
         {
-          "client_id": "982388286670-lgk8bt6bkk18kkdrpo67f5pjupn0evhv.apps.googleusercontent.com",
+          "client_id": "781260468063-f2622udukjfuv7dgrqgtgr41f2dbtflu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.vn.ringtone_app",
-            "certificate_hash": "1c6a88f6a4e7dcae61bd086c35eaeaf19f6fe4b3"
-          }
-        },
-        {
-          "client_id": "982388286670-t5cdd2fnfmgnnnuiqv5tvkvi6c4ljm73.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.vn.ringtone_app",
+            "package_name": "com.blackpink.ringtone.app.music",
             "certificate_hash": "12ac41d5ec566bebc61e765f1acf14430db4f822"
           }
         },
         {
-          "client_id": "982388286670-bo3860ag4s43ue2cit1h6iv916s22rik.apps.googleusercontent.com",
+          "client_id": "781260468063-t63qghoubpvu38rngcni5tcicmngqtk9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA9TuyK7mHL5tsAsb6jSqqlAapiLMcic_0"
+          "current_key": "AIzaSyA4IeQSQ1w3RtKAGk4YpXEgNo0SFnU1SVs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "982388286670-bo3860ag4s43ue2cit1h6iv916s22rik.apps.googleusercontent.com",
+              "client_id": "781260468063-t63qghoubpvu38rngcni5tcicmngqtk9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781260468063:android:18180acc04f38d4500d0ea",
+        "android_client_info": {
+          "package_name": "com.vn.blackpink.ringtone.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781260468063-tkhlg3evi41g2a307e01jbvai0hokh1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vn.blackpink.ringtone.app",
+            "certificate_hash": "12ac41d5ec566bebc61e765f1acf14430db4f822"
+          }
+        },
+        {
+          "client_id": "781260468063-t63qghoubpvu38rngcni5tcicmngqtk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4IeQSQ1w3RtKAGk4YpXEgNo0SFnU1SVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781260468063-t63qghoubpvu38rngcni5tcicmngqtk9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
